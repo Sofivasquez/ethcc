@@ -1,9 +1,13 @@
-const GET = async (request) => {
-    return new Response('Hello, Next.js!', {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    });
+const POST = async (request) => {
+  const requestBody = await request.json();
+  const userInput = requestBody.input;
+  const responseData = {
+    userInput: userInput,
   }
+  return new Response(JSON.stringify(responseData), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
 
-  export { GET }
-  
+export { POST }
